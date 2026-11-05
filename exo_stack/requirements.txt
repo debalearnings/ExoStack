@@ -1,0 +1,7 @@
+# Python dependencies of ExoCore (exo_stack) and the algorithm plug-ins of exo_stack_resources
+# Install with:  pip3 install -r requirements.txt
+numpy
+scipy
+pyyaml
+cmaes
+bayesian-optimization==1.4.3

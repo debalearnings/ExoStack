@@ -1,0 +1,36 @@
+planners:
+  # right_knee_flexion:
+  #   gait_event_topic: "/right/gait_event1"
+  #   planner_algorithm: "LinearInterpolatedList"
+  #   profile_topic: "/profile/right_knee_flexion"
+  #   profile_type: "List"
+  #   output_topic: "/right/knee_ppr_cmd"
+  #   approach: "time_based"
+  #   rate: 100
+  #   default_output: 20.0
+    
+  right_hip_extension:
+    gait_event_topic: "/right_hip_extension_start"
+    planner_algorithm: "LinearInterpolatedList"
+    profile_topic: "/profile/right_hip_extension"
+    profile_type: "List" #List/Function
+    output_topic: "/right/hip_ppr_cmd"
+    approach: "time_based" #time_based/gait_phase
+    rate: 50
+    default_output: 20.0
+
+  left_hip_extension:
+    gait_event_topic: "/left_hip_extension_start"
+    planner_algorithm: "LinearInterpolatedList"
+    profile_topic: "/profile/left_hip_extension"
+    profile_type: "List"
+    output_topic: "/left/hip_ppr_cmd"
+    approach: "time_based" 
+    rate: 50
+    default_output: 20.0
+    
+
+    
+
+
+    

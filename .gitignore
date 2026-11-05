@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+# ROS 2 / colcon
+build/
+install/
+log/
+# Arduino / PlatformIO build output
+.pio/
+*.bin
+*.elf
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+# Personal HIL results (keep the folder)
+exo_stack_resources/hil_results/*
+!exo_stack_resources/hil_results/.gitkeep

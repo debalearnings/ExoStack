@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use ExoStack, please cite the article below."
+title: "ExoStack"
+type: software
+version: 1.0.0
+license: PolyForm-Noncommercial-1.0.0
+repository-code: "https://github.com/debadrata/ExoStack"
+url: "https://debadrata.github.io/ExoStack_documentation/"
+authors:
+  - family-names: "Sarkar"
+    given-names: "Debadrata"
+    affiliation: "Human Centred Robotics and Cybernetics Group, CSIR-CMERI, Durgapur, India"
+  - family-names: "Sen"
+    given-names: "Soumen"
+    affiliation: "Human Centred Robotics and Cybernetics Group, CSIR-CMERI, Durgapur, India"
+  - family-names: "Arora"
+    given-names: "Aman"
+    affiliation: "Human Centred Robotics and Cybernetics Group, CSIR-CMERI, Durgapur, India"
+preferred-citation:
+  type: article
+  title: "ExoStack: A Modular and Reconfigurable Software Framework for Wearable Robotics Using ROS 2"
+  journal: "arXiv preprint"
+  year: 2026
+  doi: "10.48550/arXiv.[ARXIV_ID]"
+  url: "https://arxiv.org/abs/[ARXIV_ID]"
+  authors:
+    - family-names: "Sarkar"
+      given-names: "Debadrata"
+      affiliation: "Human Centred Robotics and Cybernetics Group, CSIR-CMERI, Durgapur, India"
+    - name: "et al."

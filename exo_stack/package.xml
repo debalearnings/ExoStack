@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>exo_stack</name>
+  <version>1.0.0</version>
+  <description>ExoCore: generic ROS 2 nodes of ExoStack for wearable robots</description>
+  <!-- ROS 2 requires an email on the maintainer tag. The .invalid domain is reserved
+       (RFC 2606) and can never deliver mail: it satisfies the format and is not a contact.
+       For contact details, see the repository README. -->
+  <maintainer email="noreply@exostack.invalid">Debadrata Sarkar</maintainer>
+  <license>PolyForm-Noncommercial-1.0.0</license>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

@@ -1,0 +1,48 @@
+events:
+  right_heel_strike:
+    input_topic: "/synced_sensors"
+    sensors: [[hubr, fsr]]
+    parameters: [2.0,0.2]   # generic list
+    history_size: 5
+    output_topic: "/heel_strike_right"
+    algorithm: "HeelStrike"
+
+  left_heel_strike:
+    input_topic: "/synced_sensors"
+    sensors: [[hubl, fsr]]
+    parameters: [2.0,0.2]   # generic list
+    history_size: 5
+    output_topic: "/heel_strike_left"
+    algorithm: "HeelStrike"
+
+  right_hip_flexion:
+    input_topic: "/synced_sensors"
+    sensors: [[hubr, thigh_pitch]]
+    parameters: [0.2]  # generic list
+    history_size: 8
+    output_topic: "/right_hip_flexion_start"
+    algorithm: "ZeroCrossingPosToNeg"
+
+  left_hip_flexion:
+    input_topic: "/synced_sensors"
+    sensors: [[hubl, thigh_pitch]]
+    parameters: [0.2]  # generic list
+    history_size: 8
+    output_topic: "/left_hip_flexion_start"
+    algorithm: "ZeroCrossingPosToNeg"
+
+  right_hip_extension:
+    input_topic: "/synced_sensors"
+    sensors: [[hubr, thigh_pitch]]
+    parameters: [0.2]  # generic list
+    history_size: 5
+    output_topic: "/right_hip_extension_start"
+    algorithm: "ZeroCrossingNegToPos"
+
+  left_hip_extension:
+    input_topic: "/synced_sensors"
+    sensors: [[hubl, thigh_pitch]]
+    parameters: [0.2]  # generic list
+    history_size: 5
+    output_topic: "/left_hip_extension_start"
+    algorithm: "ZeroCrossingNegToPos"

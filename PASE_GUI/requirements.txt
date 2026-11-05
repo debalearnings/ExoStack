@@ -1,0 +1,16 @@
+#HIL Optimizers
+bayesian-optimization==1.4.3
+cmaes
+
+# Core GUI framework
+PyQt5
+
+# YAML read/write support
+ruamel.yaml
+
+# Optional: plotting (for Visualization tab later)
+pyqtgraph
+# matplotlib
+
+
+#RUN in terminal: pip3 install -r requirements.txt

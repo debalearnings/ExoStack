@@ -1,0 +1,175 @@
+profiles:
+  profile1:
+    # ---------------------------------------------------------
+    # Common profile info
+    # ---------------------------------------------------------
+    planner_name: "right_hip_extension"           # Must match an entry in mplanner.yaml
+    mode: "HIL"                                 # Options: HIL / Deployment
+    profile_builder_algo: "Builder2_List"       # Options: Builder1_List / Builder2_List / Builder1_Coefficients
+
+    # ---------------------------------------------------------
+    # HIL Algorithm Setup
+    # ---------------------------------------------------------
+    hil_algo: "OPT_CMA_ES"                          # Optimizer (from algo folder: OPT_CMA_ES / OPT_BAYESIAN / etc.)
+    hil_output_topic: "/hil_output1"            # Topic where HIL publishes next candidate/profile params
+
+  
+
+    # Example Hyperparameters for CMA-ES (if hil_algo = "OPT_CMA_ES")
+    hil_hyperparams: 
+      mean: [50.0, 200.0, 200.0, 400.0, 200.0, 700.0]   # 4 values
+      bounds: [[10,100],[110,250],[180,220],[350,450],[180,220],[600,800]]              # (list of [min,max]) Bounds per parameter
+      sigma: 20                                # (float > 0) Initial standard deviation
+      maximize: true                            # (bool) true = maximize objective, false = minimize
+      max_generations: 2
+      population_size: 9                      # (int, optional) Candidates per generation. Default ≈ 4+3*log(N)
+      n_max_resampling: 1                       # (int, optional) Max retries if samples fall outside bounds
+
+
+
+    # Example Hyperparameters for Bayesian Optimization (if hil_algo = "OPT_BAYESIAN")
+    # hil_hyperparams:
+    #   pbounds: {"param1": [-5, 5], "param2": [-5, 5]}   # (dict) Search space for each variable: {param: [min,max]}
+    #   maximize: false                         # (bool) true = maximize, false = minimize
+    #   init_points: 5                          # (int) Number of random initial samples before GP fitting
+    #   max_iters: 30                              # (int) Number of optimization iterations after init_points
+    #   acquisition_function: "ei"              # (str) Acquisition function: "ei" (Expected Improvement),
+    #                                           #       "ucb" (Upper Confidence Bound), "poi" (Prob. of Improvement)
+    #   xi: 0.02                                # (float) Exploration parameter (used with "ei"/"poi"),
+    #                                           #        higher = more exploration (default ~0.0–0.02)
+    #   kappa: 2.5                              # (float) Exploration parameter (used with "ucb"),
+    #                                           #        higher = more exploration (default ~2.0–3.0)
+    #   gp_params: {"alpha": 0.01, "n_restarts_optimizer": 5}
+    #                                           # (dict, optional) Gaussian Process regression params:
+    #                                           #   alpha: (float) Noise level (default 1e-6)
+    #                                           #   n_restarts_optimizer: (int) Random restarts for GP optimizer
+
+    # ---------------------------------------------------------
+    # Cost Function Setup
+    # ---------------------------------------------------------
+    cost_algo: "Cost_assist_resist_transmitted_force_knee_angle_splitter"                           # Cost function algorithm (from algo folder)
+    cost_topic: "/cost1"          # Topic where cost function sends back evaluated cost
+    cost_params: [15]                      # Cost function specific params (example: filter params) e.g. Resist Force Max. threshold for penalty
+
+    # Sensors needed for cost computation
+    sensors: [[hubr, thigh_pitch], [hubr, shank_pitch], [hubr, force_extension]]
+
+    # #If external sensors used
+    # external_sensors_topic: "/emg"
+
+    # Gait-cycle based evaluation
+    # additional_gait_marker_topic: "/heel_strike_left"              # (string) Topic where gait events are published
+    gait_cycles_to_skip: 2                      # (int) Number of initial gait cycles to discard
+    gait_cycles_to_consider: 3                  # (int) Number of gait cycles to actually use for cost evaluation
+
+
+##############################################################################################################################
+
+
+  profile2:
+    # ---------------------------------------------------------
+    # Common profile info
+    # ---------------------------------------------------------
+    planner_name: "left_hip_extension"           # Must match an entry in mplanner.yaml
+    mode: "HIL"                                 # Options: HIL / Deployment
+    profile_builder_algo: "Builder2_List"       # Options: Builder1_List / Builder2_List / Builder1_Coefficients
+
+    # ---------------------------------------------------------
+    # HIL Algorithm Setup
+    # ---------------------------------------------------------
+    hil_algo: "OPT_CMA_ES"                          # Optimizer (from algo folder: OPT_CMA_ES / OPT_BAYESIAN / etc.)
+    hil_output_topic: "/hil_output2"            # Topic where HIL publishes next candidate/profile params
+
+  
+
+    # Example Hyperparameters for CMA-ES (if hil_algo = "OPT_CMA_ES")
+    hil_hyperparams: 
+      mean: [50.0, 200.0, 200.0, 400.0, 200.0, 700.0]   # 4 values
+      bounds: [[10,100],[110,250],[180,220],[350,450],[180,220],[600,800]]              # (list of [min,max]) Bounds per parameter
+      sigma: 20                                # (float > 0) Initial standard deviation
+      maximize: true                            # (bool) true = maximize objective, false = minimize
+      max_generations: 2
+      population_size: 9                      # (int, optional) Candidates per generation. Default ≈ 4+3*log(N)
+      n_max_resampling: 1                       # (int, optional) Max retries if samples fall outside bounds
+
+
+
+    # Example Hyperparameters for Bayesian Optimization (if hil_algo = "OPT_BAYESIAN")
+    # hil_hyperparams:
+    #   pbounds: {"param1": [-5, 5], "param2": [-5, 5]}   # (dict) Search space for each variable: {param: [min,max]}
+    #   maximize: false                         # (bool) true = maximize, false = minimize
+    #   init_points: 5                          # (int) Number of random initial samples before GP fitting
+    #   max_iters: 30                              # (int) Number of optimization iterations after init_points
+    #   acquisition_function: "ei"              # (str) Acquisition function: "ei" (Expected Improvement),
+    #                                           #       "ucb" (Upper Confidence Bound), "poi" (Prob. of Improvement)
+    #   xi: 0.02                                # (float) Exploration parameter (used with "ei"/"poi"),
+    #                                           #        higher = more exploration (default ~0.0–0.02)
+    #   kappa: 2.5                              # (float) Exploration parameter (used with "ucb"),
+    #                                           #        higher = more exploration (default ~2.0–3.0)
+    #   gp_params: {"alpha": 0.01, "n_restarts_optimizer": 5}
+    #                                           # (dict, optional) Gaussian Process regression params:
+    #                                           #   alpha: (float) Noise level (default 1e-6)
+    #                                           #   n_restarts_optimizer: (int) Random restarts for GP optimizer
+
+    # ---------------------------------------------------------
+    # Cost Function Setup
+    # ---------------------------------------------------------
+    cost_algo: "Cost_assist_resist_transmitted_force_knee_angle_splitter"                           # Cost function algorithm (from algo folder)
+    cost_topic: "/cost2"          # Topic where cost function sends back evaluated cost
+    cost_params: [15]                      # Cost function specific params (example: filter params) e.g. Resist Force Max. threshold for penalty
+
+    # Sensors needed for cost computation
+    sensors: [[hubl, thigh_pitch], [hubl, shank_pitch], [hubl, force_extension]]
+
+    # #If external sensors used
+    # external_sensors_topic: "/emg"
+
+    # Gait-cycle based evaluation
+    # additional_gait_marker_topic: "/heel_strike_left"              # (string) Topic where gait events are published
+    gait_cycles_to_skip: 2                      # (int) Number of initial gait cycles to discard
+    gait_cycles_to_consider: 3                  # (int) Number of gait cycles to actually use for cost evaluation
+
+    ################################## ACTUAL PROFILES ###############################################################
+
+  # profile3:
+  #   planner_name: "right_hip_extension"
+  #   mode: "Deployment" #Deployment/HIL
+  #   speed_required: true #true/false
+  #   speed_topic: "/exo/speed"
+  #   intent_required: false #true/false
+  #   # intent_topic: "/exo/intent"
+  #   lookup_table: speed_list_lookuptable_2         # inside ~/exo_stack_resources/lookuptable/
+  #   lookup_algo: "Lookup_Speed_Segmentwise" # "Lookup_Speed_Intent_Segmentwise(List/Coefficients)/Lookup_Speed_Segmentwise/Lookup_Speed_Interpolated(Mainly List type)"
+  #   profile_builder_algo: "Builder2_List" # "Builder1_List/Builder2_List/Builder1_Coefficients"
+  #   rate: 20                  # Hz
+
+
+  #   # ---------------------------------------------------------
+  #   # Cost Function Setup
+  #   # ---------------------------------------------------------
+  #   cost_algo: "Cost_assist_resist_transmitted_force_knee_angle_splitter"                           # Cost function algorithm (from algo folder)
+  #   cost_topic: "/cost2"          # Topic where cost function sends back evaluated cost every cycle
+  #   cost_params: [15]                      # Cost function specific params (example: filter params) e.g. Resist Force Max. threshold for penalty
+
+  #   # Sensors needed for cost computation
+  #   sensors: [[hubr,thigh_pitch], [hubr,shank_pitch], [hubr,force_extension]]
+
+  #   # #If external sensors used
+  #   # external_sensors_topic: "/emg"
+
+  #   # Gait-cycle based evaluation
+  #   # additional_gait_marker_topic: "/right_hip_flexion_start"              # (string) Topic where gait events are published
+  #   gait_cycles_to_skip: 2                      # (int) Number of initial gait cycles to discard
+  #   gait_cycles_to_consider: 3                  # (int) Number of gait cycles to actually use for cost evaluation
+
+  # profile4:
+  #   planner_name: "left_hip_extension"
+  #   mode: "Deployment"
+  #   speed_required: true
+  #   speed_topic: "/exo/speed"
+  #   intent_required: false
+  #   # intent_topic: "/exo/intent"
+  #   lookup_table: "speed_list_lookuptable_2.json"           # inside ~/exo_stack_resources/lookuptable/
+  #   lookup_algo: "Lookup_Speed_Segmentwise" # "Lookup_Speed_Intent_Segmentwise(List/Coefficients)/Lookup_Speed_Segmentwise/Lookup_Speed_Interpolated(Mainly List type)"
+  #   profile_builder_algo: "Builder2_List" # "Builder1_List/Builder2_List/Builder1_Coefficients"
+  #   rate: 20                  # Hz

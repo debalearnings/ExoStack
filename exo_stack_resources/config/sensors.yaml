@@ -1,0 +1,27 @@
+hubs:
+  hubl:
+    topic: "/hub_left"
+    sensors: ["thigh_roll", "thigh_pitch", "thigh_yaw", "thigh_omega_x", "thigh_omega_y", "thigh_omega_z", "thigh_acc_x", "thigh_acc_y", "thigh_acc_z",
+              "shank_roll", "shank_pitch", "shank_yaw", "shank_omega_x", "shank_omega_y", "shank_omega_z", "shank_acc_x", "shank_acc_y", "shank_acc_z",
+              "force_flexion", "force_extension", "fsr"
+             ]
+  hubr:
+    topic: "/hub_right"
+    sensors: ["thigh_roll", "thigh_pitch", "thigh_yaw", "thigh_omega_x", "thigh_omega_y", "thigh_omega_z", "thigh_acc_x", "thigh_acc_y", "thigh_acc_z",
+              "shank_roll", "shank_pitch", "shank_yaw", "shank_omega_x", "shank_omega_y", "shank_omega_z", "shank_acc_x", "shank_acc_y", "shank_acc_z",
+              "force_flexion", "force_extension", "fsr"
+             ]
+  # hub3:
+  #   topic: "/hub_3"
+  #   sensors: ["thigh_roll", "thigh_pitch", "thigh_yaw", "thigh_omega_x", "thigh_omega_y", "thigh_omega_z", "thigh_acc_x", "thigh_acc_y", "thigh_acc_z",
+  #             "shank_roll", "shank_pitch", "shank_yaw", "shank_omega_x", "shank_omega_y", "shank_omega_z", "shank_acc_x", "shank_acc_y", "shank_acc_z",
+  #             "force_flexion", "force_extension", "fsr"
+  #            ]
+  # hub4:
+  #   topic: "/hub_4"
+  #   sensors: ["thigh_roll", "thigh_pitch", "thigh_yaw", "thigh_omega_x", "thigh_omega_y", "thigh_omega_z", "thigh_acc_x", "thigh_acc_y", "thigh_acc_z",
+  #             "shank_roll", "shank_pitch", "shank_yaw", "shank_omega_x", "shank_omega_y", "shank_omega_z", "shank_acc_x", "shank_acc_y", "shank_acc_z",
+  #             "force_flexion", "force_extension", "fsr"
+  #            ]
+slop_time: 0.010
+output_topic: "/synced_sensors"
